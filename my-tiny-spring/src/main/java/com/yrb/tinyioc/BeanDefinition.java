@@ -4,7 +4,7 @@ package com.yrb.tinyioc;
 /**
  * @author bjyangrubing
  * @createTime 2017/8/7 14:28
- * Description: Bean的定义类
+ * Description: bean的内容以及元数据，保存在beanFactory中，包装bean的实体
  */
 public class BeanDefinition
 {
@@ -13,6 +13,18 @@ public class BeanDefinition
 	private Class beanClass;
 
 	private String beanClassName;
+
+	public PropertyValues getPropertyValues()
+	{
+		return propertyValues;
+	}
+
+	public void setPropertyValues(PropertyValues propertyValues)
+	{
+		this.propertyValues = propertyValues;
+	}
+
+	private PropertyValues propertyValues;
 
 	public Class getBeanClass()
 	{

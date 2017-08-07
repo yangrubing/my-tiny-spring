@@ -7,9 +7,15 @@ package com.yrb.tinyioc;
  */
 public class HelloWorldService
 {
+	private String text;
+
 	public void helloworld()
 	{
-		System.out.println("Hello, World!");
+		System.out.println(text);
 	}
 
+	public void setText(String text)
+	{
+		this.text = text;
+	}
 }

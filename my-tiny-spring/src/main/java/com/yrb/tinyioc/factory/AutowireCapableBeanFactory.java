@@ -1,6 +1,9 @@
 package com.yrb.tinyioc.factory;
 
 import com.yrb.tinyioc.BeanDefinition;
+import com.yrb.tinyioc.PropertyValue;
+
+import java.lang.reflect.Field;
 
 /**
  * @author bjyangrubing
@@ -10,22 +13,40 @@ import com.yrb.tinyioc.BeanDefinition;
 public class AutowireCapableBeanFactory extends AbstractBeanFactory
 {
 	@Override
-	protected Object doCreateBean(BeanDefinition beanDefinition)
+	protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception
 	{
-		try
-		{
-			Object bean = beanDefinition.getBeanClass().newInstance();
-			return bean;
-		}
-		catch (IllegalAccessException e)
-		{
-			e.printStackTrace();
-		}
-		catch (InstantiationException e)
-		{
-			e.printStackTrace();
-		}
-
-		return null;
+		Object bean = createBeanInstance(beanDefinition);
+		applyPropertyValues(bean, beanDefinition);
+		return bean;
 	}
+
+	/**
+	 * 将bean的属性值进行注入
+	 * @param bean
+	 * @param beanDefinition
+	 */
+	private void applyPropertyValues(Object bean, BeanDefinition beanDefinition)
+			throws NoSuchFieldException, IllegalAccessException
+	{
+		for (PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues())
+		{
+			Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
+			declaredField.setAccessible(true);
+			declaredField.set(bean, propertyValue.getValue());
+		}
+	}
+
+	/**
+	 * 通过Class对象来创造一个对象
+	 * @param beanDefinition
+	 * @return
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 */
+	private Object createBeanInstance(BeanDefinition beanDefinition)
+			throws IllegalAccessException, InstantiationException
+	{
+		return beanDefinition.getBeanClass().newInstance();
+	}
+
 }
