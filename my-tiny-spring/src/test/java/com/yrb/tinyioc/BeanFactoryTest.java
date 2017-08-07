@@ -1,8 +1,8 @@
 package com.yrb.tinyioc;
 
+import com.yrb.tinyioc.factory.AutowireCapableBeanFactory;
+import com.yrb.tinyioc.factory.BeanFactory;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author bjyangrubing
@@ -16,12 +16,14 @@ public class BeanFactoryTest
 	public void test(){
 
 		//1. 初始化beanFactory
-		BeanFactory beanFactory = new BeanFactory();
+		BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
 		//2. 注入bean
-		BeanDefinition beanDefinition = new BeanDefinition(new HelloWorldService());
+		BeanDefinition beanDefinition = new BeanDefinition();
 
-		beanFactory.regitsterBeanDefinition("helloWorldService", beanDefinition);
+		beanDefinition.setBeanClassName("com.yrb.tinyioc.HelloWorldService");
+
+		beanFactory.registerBeanDefinition("helloWorldService", beanDefinition);
 
 		//3. 获取bean
 		HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloWorldService");

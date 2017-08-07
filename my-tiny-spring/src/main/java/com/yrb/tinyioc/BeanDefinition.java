@@ -1,5 +1,6 @@
 package com.yrb.tinyioc;
 
+
 /**
  * @author bjyangrubing
  * @createTime 2017/8/7 14:28
@@ -9,13 +10,49 @@ public class BeanDefinition
 {
 	private Object bean;
 
-	public BeanDefinition(Object bean)
+	private Class beanClass;
+
+	private String beanClassName;
+
+	public Class getBeanClass()
 	{
-		this.bean = bean;
+		return beanClass;
+	}
+
+	public void setBeanClass(Class beanClass)
+	{
+		this.beanClass = beanClass;
+	}
+
+	public String getBeanClassName()
+	{
+		return beanClassName;
+	}
+
+	public void setBeanClassName(String beanClassName)
+	{
+		this.beanClassName = beanClassName;
+		try
+		{
+			/**
+			 * 根据bean的className来获取bean的Class对象
+			 */
+			this.beanClass = Class.forName(beanClassName);
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+
 	}
 
 	public Object getBean()
 	{
 		return bean;
+	}
+
+	public void setBean(Object bean)
+	{
+		this.bean = bean;
 	}
 }
