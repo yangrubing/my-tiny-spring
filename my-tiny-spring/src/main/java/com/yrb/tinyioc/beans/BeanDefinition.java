@@ -1,4 +1,4 @@
-package com.yrb.tinyioc;
+package com.yrb.tinyioc.beans;
 
 /**
  * @author bjyangrubing

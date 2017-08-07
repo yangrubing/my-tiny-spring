@@ -1,4 +1,4 @@
-package com.yrb.tinyioc.io;
+package com.yrb.tinyioc.beans.io;
 
 import java.io.InputStream;
 import java.net.URL;

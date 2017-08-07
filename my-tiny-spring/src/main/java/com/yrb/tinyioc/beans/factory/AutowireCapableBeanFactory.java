@@ -1,8 +1,8 @@
-package com.yrb.tinyioc.factory;
+package com.yrb.tinyioc.beans.factory;
 
-import com.yrb.tinyioc.BeanDefinition;
 import com.yrb.tinyioc.BeanReference;
-import com.yrb.tinyioc.PropertyValue;
+import com.yrb.tinyioc.beans.BeanDefinition;
+import com.yrb.tinyioc.beans.PropertyValue;
 
 import java.lang.reflect.Field;
 

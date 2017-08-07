@@ -1,6 +1,6 @@
-package com.yrb.tinyioc.factory;
+package com.yrb.tinyioc.beans.factory;
 
-import com.yrb.tinyioc.BeanDefinition;
+import com.yrb.tinyioc.beans.BeanDefinition;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,7 +35,6 @@ public abstract class AbstractBeanFactory implements BeanFactory
 		return bean;
 	}
 
-	@Override
 	public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception
 	{
 		beanDefinitionMap.put(name, beanDefinition);

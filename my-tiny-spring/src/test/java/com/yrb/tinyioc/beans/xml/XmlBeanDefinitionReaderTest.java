@@ -1,6 +1,6 @@
-package com.yrb.tinyioc.xml;
+package com.yrb.tinyioc.beans.xml;
 
-import com.yrb.tinyioc.io.ResourceLoader;
+import com.yrb.tinyioc.beans.io.ResourceLoader;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,10 +1,10 @@
 package com.yrb.tinyioc;
 
-import com.yrb.tinyioc.factory.AbstractBeanFactory;
-import com.yrb.tinyioc.factory.AutowireCapableBeanFactory;
-import com.yrb.tinyioc.factory.BeanFactory;
-import com.yrb.tinyioc.io.ResourceLoader;
-import com.yrb.tinyioc.xml.XmlBeanDefinitionReader;
+import com.yrb.tinyioc.beans.BeanDefinition;
+import com.yrb.tinyioc.beans.factory.AbstractBeanFactory;
+import com.yrb.tinyioc.beans.factory.AutowireCapableBeanFactory;
+import com.yrb.tinyioc.beans.io.ResourceLoader;
+import com.yrb.tinyioc.beans.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
 import java.util.Map;
@@ -26,7 +26,7 @@ public class BeanFactoryTest
 		xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
 
 		//2. 初始化BeanFactory并注册Bean
-		BeanFactory beanFactory = new AutowireCapableBeanFactory();
+		AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
 		for (Map.Entry<String, BeanDefinition> entry : xmlBeanDefinitionReader.getRegistry().entrySet())
 		{
 			beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());

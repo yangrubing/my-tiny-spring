@@ -1,10 +1,10 @@
-package com.yrb.tinyioc.xml;
+package com.yrb.tinyioc.beans.xml;
 
-import com.yrb.tinyioc.AbstractBeanDefinitionReader;
-import com.yrb.tinyioc.BeanDefinition;
 import com.yrb.tinyioc.BeanReference;
-import com.yrb.tinyioc.PropertyValue;
-import com.yrb.tinyioc.io.ResourceLoader;
+import com.yrb.tinyioc.beans.AbstractBeanDefinitionReader;
+import com.yrb.tinyioc.beans.BeanDefinition;
+import com.yrb.tinyioc.beans.PropertyValue;
+import com.yrb.tinyioc.beans.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

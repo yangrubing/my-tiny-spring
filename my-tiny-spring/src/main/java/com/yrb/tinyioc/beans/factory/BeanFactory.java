@@ -1,6 +1,4 @@
-package com.yrb.tinyioc.factory;
-
-import com.yrb.tinyioc.BeanDefinition;
+package com.yrb.tinyioc.beans.factory;
 
 /**
  * @author bjyangrubing
@@ -11,5 +9,4 @@ public interface BeanFactory
 {
 	Object getBean(String name) throws Exception;
 
-	void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception;
 }

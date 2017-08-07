@@ -1,6 +1,6 @@
-package com.yrb.tinyioc;
+package com.yrb.tinyioc.beans;
 
-import com.yrb.tinyioc.io.ResourceLoader;
+import com.yrb.tinyioc.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

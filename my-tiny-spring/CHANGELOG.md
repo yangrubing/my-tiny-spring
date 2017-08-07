@@ -13,3 +13,5 @@
 
 ## 5. step-5-inject-bean-to-bean
  - 通过XML配置来将一个bean注入到另外一个bean
+## 6. step-6-invite-application-context
+ - ApplicationContext登场
