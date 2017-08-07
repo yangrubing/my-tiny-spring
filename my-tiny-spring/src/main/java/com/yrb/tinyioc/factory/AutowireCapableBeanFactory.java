@@ -1,6 +1,7 @@
 package com.yrb.tinyioc.factory;
 
 import com.yrb.tinyioc.BeanDefinition;
+import com.yrb.tinyioc.BeanReference;
 import com.yrb.tinyioc.PropertyValue;
 
 import java.lang.reflect.Field;
@@ -16,6 +17,7 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory
 	protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception
 	{
 		Object bean = createBeanInstance(beanDefinition);
+		beanDefinition.setBean(bean);
 		applyPropertyValues(bean, beanDefinition);
 		return bean;
 	}
@@ -26,13 +28,21 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory
 	 * @param beanDefinition
 	 */
 	private void applyPropertyValues(Object bean, BeanDefinition beanDefinition)
-			throws NoSuchFieldException, IllegalAccessException
+			throws Exception
 	{
 		for (PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues())
 		{
 			Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
 			declaredField.setAccessible(true);
-			declaredField.set(bean, propertyValue.getValue());
+
+			Object value = propertyValue.getValue();
+
+			if (value instanceof BeanReference)
+			{
+				BeanReference beanReference = (BeanReference) value;
+				value = getBean(beanReference.getName());
+			}
+			declaredField.set(bean, value);
 		}
 	}
 

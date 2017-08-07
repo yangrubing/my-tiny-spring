@@ -3,8 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+
+    <bean name="outputService" class="com.yrb.tinyioc.OutputService">
+        <property name="helloWorldService" ref="helloWorldService"></property>
+    </bean>
+
     <bean name="helloWorldService" class="com.yrb.tinyioc.HelloWorldService">
         <property name="text" value="Hello World!"></property>
+        <property name="outputService" ref="outputService"></property>
     </bean>
 
 </beans>

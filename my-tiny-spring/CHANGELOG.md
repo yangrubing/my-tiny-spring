@@ -10,3 +10,6 @@
 
 ## 4. step-4-config-beanfactory-with-xml
  - 通过读取xml文件获取 `BeanDefinition` ，并将通过bean的definition获取bean
+
+## 5. step-5-inject-bean-to-bean
+ - 通过XML配置来将一个bean注入到另外一个bean
