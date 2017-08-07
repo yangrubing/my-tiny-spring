@@ -1,6 +1,5 @@
 package com.yrb.tinyioc;
 
-
 /**
  * @author bjyangrubing
  * @createTime 2017/8/7 14:28
@@ -24,7 +23,7 @@ public class BeanDefinition
 		this.propertyValues = propertyValues;
 	}
 
-	private PropertyValues propertyValues;
+	private PropertyValues propertyValues = new PropertyValues();
 
 	public Class getBeanClass()
 	{

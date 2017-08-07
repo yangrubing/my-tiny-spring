@@ -7,3 +7,6 @@
 
 ## 3. step-3-inject-bean-with-property
  - 通过反射来给Bean注入属性
+
+## 4. step-4-config-beanfactory-with-xml
+ - 通过读取xml文件获取 `BeanDefinition` ，并将通过bean的definition获取bean

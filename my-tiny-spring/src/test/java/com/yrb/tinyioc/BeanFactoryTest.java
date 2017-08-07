@@ -2,7 +2,11 @@ package com.yrb.tinyioc;
 
 import com.yrb.tinyioc.factory.AutowireCapableBeanFactory;
 import com.yrb.tinyioc.factory.BeanFactory;
+import com.yrb.tinyioc.io.ResourceLoader;
+import com.yrb.tinyioc.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * @author bjyangrubing
@@ -16,20 +20,16 @@ public class BeanFactoryTest
 	public void test() throws Exception
 	{
 
-		//1. 初始化beanFactory
+		//1. 读取配置
+		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
+		xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
+
+		//2. 初始化BeanFactory并注册Bean
 		BeanFactory beanFactory = new AutowireCapableBeanFactory();
-
-		//2. bean的定义
-		BeanDefinition beanDefinition = new BeanDefinition();
-		beanDefinition.setBeanClassName("com.yrb.tinyioc.HelloWorldService");
-
-		//3. 设置属性
-		PropertyValues propertyValues = new PropertyValues();
-		propertyValues.addPropertyValue(new PropertyValue("text", "Hello, World"));
-		beanDefinition.setPropertyValues(propertyValues);
-
-		//4. 生成Bean
-		beanFactory.registerBeanDefinition("helloWorldService", beanDefinition);
+		for (Map.Entry<String, BeanDefinition> entry : xmlBeanDefinitionReader.getRegistry().entrySet())
+		{
+			beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
+		}
 
 		//3. 获取bean
 		HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloWorldService");
