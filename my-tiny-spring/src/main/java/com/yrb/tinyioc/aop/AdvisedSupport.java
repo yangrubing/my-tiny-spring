@@ -13,6 +13,18 @@ public class AdvisedSupport
 
 	private MethodInterceptor methodInterceptor;
 
+	private MethodMatcher methodMatcher;
+
+	public MethodMatcher getMethodMatcher()
+	{
+		return methodMatcher;
+	}
+
+	public void setMethodMatcher(MethodMatcher methodMatcher)
+	{
+		this.methodMatcher = methodMatcher;
+	}
+
 	public TargetSource getTargetSource()
 	{
 		return targetSource;

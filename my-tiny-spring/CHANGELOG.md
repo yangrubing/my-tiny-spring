@@ -19,3 +19,4 @@
  - 使用JDK动态代理实现AOP织入
 ## 8. step-8-invite-pointcut-and-aspectj
  - 使用Aspectj管理切面,并引入BeanPostProcessor
+## 9. step-9-auto-create-aop-proxy

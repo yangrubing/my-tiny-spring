@@ -24,7 +24,7 @@ public class JdkDynamicAopProxyTest
 		//------------helloworld service with aop
 		//1. 设置被代理的对象（Join Point)
 		AdvisedSupport advisedSupport = new AdvisedSupport();
-		TargetSource targetSource = new TargetSource(HelloWorldService.class, helloWorldService);
+		TargetSource targetSource = new TargetSource(helloWorldService, HelloWorldService.class);
 		advisedSupport.setTargetSource(targetSource);
 
 		//2. 设置拦截器(Advice)

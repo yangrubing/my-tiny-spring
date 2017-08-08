@@ -96,7 +96,7 @@ public abstract class AbstractBeanFactory implements BeanFactory
 		this.beanPostProcessors.add(beanPostProcessor);
 	}
 
-	public List<Object> getBeansForType(Class type) throws Exception
+	public List getBeansForType(Class type) throws Exception
 	{
 		List<Object> beans = new ArrayList<Object>();
 		for (String beanDefinitionName : beanDefinitionNames)

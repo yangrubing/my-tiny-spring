@@ -34,4 +34,9 @@ public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor
 	{
 		return advice;
 	}
+
+	public void setExpression(String expression)
+	{
+		this.pointcut.setExpression(expression);
+	}
 }

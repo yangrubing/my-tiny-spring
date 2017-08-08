@@ -3,8 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-
     <bean id="outputService" class="com.yrb.tinyioc.OutputServiceImpl">
+        <property name="helloWorldService" ref="helloWorldService"></property>
     </bean>
 
     <bean id="helloWorldService" class="com.yrb.tinyioc.HelloWorldServiceImpl">
@@ -12,13 +12,7 @@
         <property name="outputService" ref="outputService"></property>
     </bean>
 
-    <bean id="timeInterceptor" class="com.yrb.tinyioc.aop.TimerInterceptor"></bean>
-
-    <bean id="autoProxyCreator" class="com.yrb.tinyioc.aop.AspectJAwareAdvisorAutoProxyCreator"></bean>
-
-    <bean id="aspectjAspect" class="com.yrb.tinyioc.aop.AspectJExpressionPointcutAdvisor">
-        <property name="advice" ref="timeInterceptor"></property>
-        <property name="expression" value="execution(* com.yrb.tinyioc.*.*(..))"></property>
+    <bean id="beanInitializeLogger" class="com.yrb.tinyioc.BeanInitializeLogger">
     </bean>
 
 </beans>
