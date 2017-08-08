@@ -15,3 +15,5 @@
  - 通过XML配置来将一个bean注入到另外一个bean
 ## 6. step-6-invite-application-context
  - ApplicationContext登场
+## 7. step-7-method-interceptor-by-jdk-dynamic-proxy
+ - 使用JDK动态代理实现AOP织入

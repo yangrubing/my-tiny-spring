@@ -2,27 +2,10 @@ package com.yrb.tinyioc;
 
 /**
  * @author bjyangrubing
- * @createTime 2017/8/7 14:39
+ * @createTime 2017/8/8 10:28
  * Description: 
  */
-public class HelloWorldService
+public interface HelloWorldService
 {
-	private String text;
-
-	private OutputService outputService;
-
-	public void helloWorld()
-	{
-		outputService.output(text);
-	}
-
-	public void setText(String text)
-	{
-		this.text = text;
-	}
-
-	public void setOutputService(OutputService outputService)
-	{
-		this.outputService = outputService;
-	}
+	void helloWorld();
 }

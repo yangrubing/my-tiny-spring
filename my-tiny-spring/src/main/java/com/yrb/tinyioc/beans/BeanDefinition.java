@@ -13,6 +13,10 @@ public class BeanDefinition
 
 	private String beanClassName;
 
+	public BeanDefinition()
+	{
+	}
+
 	public PropertyValues getPropertyValues()
 	{
 		return propertyValues;
