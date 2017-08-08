@@ -13,4 +13,7 @@
         <property name="outputService" ref="outputService"></property>
     </bean>
 
+    <bean name="beanInitializeLogger" class="com.yrb.tinyioc.BeanInitializeLogger">
+    </bean>
+
 </beans>

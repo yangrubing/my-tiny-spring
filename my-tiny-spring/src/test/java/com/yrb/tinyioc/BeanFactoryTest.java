@@ -27,6 +27,7 @@ public class BeanFactoryTest
 
 		//2. 初始化BeanFactory并注册Bean
 		AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
+		beanFactory.addBeanPostProcessor(new BeanInitializeLogger());
 		for (Map.Entry<String, BeanDefinition> entry : xmlBeanDefinitionReader.getRegistry().entrySet())
 		{
 			beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());

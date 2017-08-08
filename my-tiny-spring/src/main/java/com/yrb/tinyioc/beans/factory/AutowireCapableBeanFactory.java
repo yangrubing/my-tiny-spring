@@ -13,21 +13,13 @@ import java.lang.reflect.Field;
  */
 public class AutowireCapableBeanFactory extends AbstractBeanFactory
 {
-	@Override
-	protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception
-	{
-		Object bean = createBeanInstance(beanDefinition);
-		beanDefinition.setBean(bean);
-		applyPropertyValues(bean, beanDefinition);
-		return bean;
-	}
-
 	/**
 	 * 将bean的属性值进行注入
 	 * @param bean
 	 * @param beanDefinition
 	 */
-	private void applyPropertyValues(Object bean, BeanDefinition beanDefinition)
+	@Override
+	public void applyPropertyValues(Object bean, BeanDefinition beanDefinition)
 			throws Exception
 	{
 		for (PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues())
@@ -44,19 +36,6 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory
 			}
 			declaredField.set(bean, value);
 		}
-	}
-
-	/**
-	 * 通过Class对象来创造一个对象
-	 * @param beanDefinition
-	 * @return
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
-	 */
-	private Object createBeanInstance(BeanDefinition beanDefinition)
-			throws IllegalAccessException, InstantiationException
-	{
-		return beanDefinition.getBeanClass().newInstance();
 	}
 
 }
