@@ -8,24 +8,31 @@ package com.yrb.tinyioc.aop;
 public class TargetSource
 {
 
-	private Class<?>[] targetClass;
+	private Class<?> targetClass;
+
+	private Class<?>[] interfaces;
 
 	private Object target;
 
-	public TargetSource(Object target, Class<?>... targetClass)
+	public TargetSource(Class<?> targetClass, Class<?>[] interfaces, Object target)
 	{
 		this.targetClass = targetClass;
+		this.interfaces = interfaces;
 		this.target = target;
 	}
 
-	public Class<?>[] getTargetClass()
+	public Class<?> getTargetClass()
 	{
 		return targetClass;
+	}
+
+	public Class<?>[] getInterfaces()
+	{
+		return interfaces;
 	}
 
 	public Object getTarget()
 	{
 		return target;
 	}
-
 }
